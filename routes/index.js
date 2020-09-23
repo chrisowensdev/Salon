@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-
+const fetch = require('node-fetch');
 
 //TEST ROUTE
 router.get('/', async (req, res) => {
@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
             title: 'Login',
         },
         partials: {
-            partial: 'partial-login'
-        }
+            partial: 'partial-login',
+        },
     });
 });
 

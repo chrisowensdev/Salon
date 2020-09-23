@@ -8,7 +8,7 @@ const express = require('express');
 const es6Renderer = require('express-es6-template-engine');
 const morgan = require('morgan');
 const logger = morgan('tiny');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
@@ -26,7 +26,13 @@ app.use(
     })
 );
 app.use(logger);
-app.use(helmet());
+// app.use(helmet());
+// app.use(helmet.contentSecurityPolicy({
+//     directives: {
+//         defaultSrc: ["'self'"],
+//     }
+// }));
+
 app.use(cookieParser());
 app.use(
     session({
