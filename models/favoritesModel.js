@@ -6,7 +6,7 @@ class FavoritesList {
         this.user_id = user_id
         this.object_id = object_id
     }
-    static async showAllFavorites(id, user_id, object_id) {
+    static async showAllFavorites(user_id) {
         try {
             const response = await db.any(`
             SELECT * FROM favorites WHERE user_id = $1

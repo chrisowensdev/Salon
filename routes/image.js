@@ -23,7 +23,7 @@ router.get('/:object_id?', async (req, res) => {
     });
 });
 //POST new review for this user_id
-router.post('/:object_id?', (req, res) => {
+router.post('/:object_id?', async (req, res) => {
     const object_id = req.params.object_id
     console.log('this is the req body: ', req.body);
     const {
@@ -34,9 +34,9 @@ router.post('/:object_id?', (req, res) => {
     await reviewsList.addReview(user_id, review_text, date, object_id);
     res.redirect(`/${object_id}`);
 });
-//delete review at specific review.id
-router.delete('/:object_id?', (req, res) => {
-    if (req.body.delete === 'Delete') {
+//DELETE review at specific review.id
+router.delete('/:object_id?', async (req, res) => {
+    if (req.body.delete === 'delete') {
         const {
             id
         } = req.body
@@ -44,10 +44,8 @@ router.delete('/:object_id?', (req, res) => {
         res.redirect(`/${object_id}`);
     }
 })
-
-
 //POST to favorites list for this user_id
-router.post('/:object_id?', (req, res) => {
+router.post('/:object_id?', async (req, res) => {
     const object_id = req.params.object_id
     const {
         user_id
@@ -55,3 +53,13 @@ router.post('/:object_id?', (req, res) => {
     await favoritesList.addFavorite(user_id, object_id);
     res.redirect(`/${object_id}`);
 });
+//DELETE favorite at specific object_id
+router.delete('/:object_id?', async (req, res) => {
+    if (req.body.delete === 'delete') {
+        const object_id = req.params.object_id;
+        await reviewsList.removeFavorite(object_id);
+        res.redirect(`/${object_id}`);
+    }
+});
+
+module.exports = router;

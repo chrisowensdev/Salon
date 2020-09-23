@@ -8,7 +8,7 @@ const express = require('express');
 const es6Renderer = require('express-es6-template-engine');
 const morgan = require('morgan');
 const logger = morgan('tiny');
-// const helmet = require('helmet');
+const helmet = require('helmet');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
@@ -26,12 +26,11 @@ app.use(
     })
 );
 app.use(logger);
-// app.use(helmet());
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//         defaultSrc: ["'self'"],
-//     }
-// }));
+app.use(
+    helmet({
+        contentSecurityPolicy: false,
+    })
+);
 
 app.use(cookieParser());
 app.use(
@@ -49,6 +48,12 @@ server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}`);
 });
 
-const rootController = require('./routes/index');
+const rootController = require('./routes/index'),
+    imageController = require('./routes/image'),
+    profileController = require('./routes/profile'),
+    usersController = require('./routes/users');
 
 app.use('/', rootController);
+app.use('/users', usersController);
+app.use('/profile', profileController);
+app.use('/image', imageController);

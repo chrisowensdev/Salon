@@ -33,9 +33,9 @@ class ReviewsList {
             return error.message;
         }
     }
-    static async removeReview(user_id, review_text, date, object_id) {
+    static async removeReview(id) {
         try {
-            const response = await db.result(`DELETE FROM reviews WHERE id, user_id, review_text, date, object_id) VALUES ($1, $2, $3, $4, $5);`, [id, user_id, review_text, date, object_id]);
+            const response = await db.result(`DELETE FROM reviews WHERE id) VALUES ($1);`, [id]);
         } catch (error) {
             console.error('ERROR: ', error.message);
             return error.message;
