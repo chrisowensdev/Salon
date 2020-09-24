@@ -1,0 +1,13 @@
+<h1>${title}</h1>
+
+${data.map(item => {
+return `
+<p>${item.review_text}</p>
+`
+})}
+
+${dataFav.map(item => {
+return `
+<p>${item.object_id}</p>
+`
+})}

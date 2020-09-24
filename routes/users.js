@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
             } = response;
             req.session.email = email
             req.session.user_id = user_id
-            res.redirect('/search')
+            res.redirect('/')
         } else {
             res.sendStatus(401)
         }
