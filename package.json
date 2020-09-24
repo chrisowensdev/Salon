@@ -18,6 +18,7 @@
         "express-es6-template-engine": "^2.2.3",
         "express-session": "^1.17.1",
         "helmet": "^4.1.1",
+        "http-parser-js": "^0.5.2",
         "materialize-css": "^1.0.0-rc.2",
         "morgan": "^1.10.0",
         "node-fetch": "^2.6.1",
