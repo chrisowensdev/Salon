@@ -26,19 +26,19 @@ router.get('/', async (req, res) => {
 router.get('/:object_id?', async (req, res) => {
     const objectReviews = await reviewsList.showAllReviewsObject(req.params.object_id);
     const objId = req.params.object_id
-    fetch(`https://api.artic.edu/api/v1/artworks/${objId}`)
+    await fetch(`https://api.artic.edu/api/v1/artworks/${objId}`)
         .then(res => res.json())
-        .then(json => 
-            { bigData = {
-            id : json.data.id,
+        .then(json => {
+            bigData = {
+                id: json.data.id,
                 title: json.data.title,
                 url: json.data.thumbnail.url,
-                artist_display: json.data.artist_display,
+                artist_title: json.data.artist_title,
                 description: json.data.description
-        }
-    
-})
-console.log(bigData)
+            }
+
+        })
+    console.log(bigData)
     res.render('template', {
         locals: {
             title: '',
@@ -87,7 +87,7 @@ router.post('/:object_id?', async (req, res) => {
 router.delete('/:object_id?', async (req, res) => {
     if (req.body.delete === 'delete') {
         const object_id = req.params.object_id;
-        await reviewsList.removeFavorite(object_id);
+        await favoritesList.removeFavorite(object_id);
         res.redirect(`/${object_id}`);
     }
 });

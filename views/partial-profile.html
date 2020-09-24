@@ -14,7 +14,7 @@
         <div class="collapsible-header"><i class="material-icons">place</i>Favorites</div>
         ${dataFav.map(item => {
         return `
-        <div class="collapsible-body"><span>${item.object_id}</span></div>
+        <div class="collapsible-body"><span><a href="/image/${item.object_id}">Object name</a></span></div>
         `
         }).join('')}
     </li>
@@ -22,5 +22,11 @@
 </ul>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
 
-<script src="/public/js/coll.js"></script>
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems);
+
+    });
+</script>
