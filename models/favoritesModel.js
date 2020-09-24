@@ -10,7 +10,8 @@ class FavoritesList {
         try {
             const response = await db.any(`
             SELECT * FROM favorites WHERE user_id = $1
-            ORDER BY id DESC;`, [user_id])
+            ORDER BY id DESC;`, [user_id]);
+            return response;
         } catch (error) {
             console.error('ERROR: ', error.message);
             return error.message;
@@ -20,7 +21,8 @@ class FavoritesList {
         try {
             const response = await db.result(`
                 INSERT INTO favorites (user_id, object_id)
-                VALUES ($1, $2);`, [user_id, object_id])
+                VALUES ($1, $2);`, [user_id, object_id]);
+            return response;
         } catch (error) {
             console.error('ERROR: ', error.message);
             return error.message;
@@ -30,7 +32,8 @@ class FavoritesList {
         try {
             const response = await db.result(`
                 DELETE FROM favorites 
-                WHERE user_id = $1 AND object_id = $2;`, [user_id, object_id])
+                WHERE user_id = $1 AND object_id = $2;`, [user_id, object_id]);
+            return response;
         } catch (error) {
             console.error('ERROR: ', error.message);
             return error.message;

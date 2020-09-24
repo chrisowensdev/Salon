@@ -1,0 +1,39 @@
+<nav>
+    <a href=""><img src="" alt="">LOGO</a>
+    <ul>
+        <li>Home</li>
+        <li>Logout</li>
+        <li><a href="/profile">Profile</a></li>
+        <li class="search"><i class="material-icons">search</i>
+            <form class="search-form" action="/" method="POST">
+                <div class="input-field">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search"></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<h1>${title}</h1>
+
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="large material-icons prefix">search</i>
+                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <label for="icon_prefix2">Search...</label>
+                <span class="helper-text" data-error="wrong" data-success="right">try searching for an artist, a style,
+                    or a subject you'd like to check out!</span>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit search
+                <i class="material-icons right">brush</i>
+            </button>
+    </form>
+</div>
+
+<script src="/js/script2.js"></script>

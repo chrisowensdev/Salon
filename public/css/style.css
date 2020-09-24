@@ -1,4 +1,22 @@
+nav {
+    display: flex;
+}
+
 .thumbnail {
     width: 70%;
     height: auto;
+}
+
+
+
+.search-form {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.search {
+    cursor: pointer;
 }

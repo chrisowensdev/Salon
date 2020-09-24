@@ -28,17 +28,17 @@ router.get('/:object_id?', async (req, res) => {
     const objId = req.params.object_id
     await fetch(`https://api.artic.edu/api/v1/artworks/${objId}`)
         .then(res => res.json())
-        .then(json => 
-            { bigData = {
-            id : json.data.id,
+        .then(json => {
+            bigData = {
+                id: json.data.id,
                 title: json.data.title,
                 url: json.data.thumbnail.url,
-                artist_display: json.data.artist_display,
+                artist_title: json.data.artist_title,
                 description: json.data.description
-        }
-    
-})
-console.log(bigData)
+            }
+
+        })
+    console.log(bigData)
     res.render('template', {
         locals: {
             title: '',

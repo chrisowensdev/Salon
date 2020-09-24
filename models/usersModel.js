@@ -26,16 +26,16 @@ class UsersList {
 
     async login() {
         try {
-            const response = await db.one(`SELECT id, username, email, password FROM users WHERE usernam = $1;`, [this.email]);
+            const response = await db.one(`SELECT id, username, email, password FROM users WHERE username = $1;`, [this.username]);
             const isValid = await this.checkPassword(response.password)
             if (!!isValid) {
                 const {
-                    name,
+                    username,
                     id
                 } = response;
                 return {
                     isValid,
-                    name,
+                    username,
                     user_id: id
                 };
             } else {
