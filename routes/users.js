@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express'),
-    db = require('../models/conn'),
     router = express.Router(),
     bcrypt = require('bcryptjs');
 
@@ -32,6 +31,7 @@ router.post('/login', async (req, res) => {
     } = req.body;
     const userInstance = new usersList(null, username, null, password);
     userInstance.login().then(response => {
+        console.log(response);
         req.session.is_logged_in = response.isValid;
         if (!!response.isValid) {
             const {
@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
             } = response;
             req.session.email = email
             req.session.user_id = user_id
-            res.redirect('search')
+            res.redirect('/search')
         } else {
             res.sendStatus(401)
         }

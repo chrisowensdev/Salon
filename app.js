@@ -1,4 +1,5 @@
 'use strict';
+process.binding('http_parser').HTTPParser = require('http-parser-js').HTTPParser;
 const http = require('http');
 
 const hostname = '127.0.0.1';

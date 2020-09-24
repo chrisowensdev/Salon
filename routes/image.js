@@ -7,6 +7,19 @@ const express = require('express'),
 const reviewsList = require('../models/reviewsModel'),
     favoritesList = require('../models/favoritesModel');
 
+
+//GET render and data for images searched
+router.get('/', async (req, res) => {
+    res.render('template', {
+        locals: {
+            title: 'Search',
+            is_logged_in: req.session.is_logged_in,
+        },
+        partials: {
+            partial: 'partial-image'
+        }
+    });
+});
 //GET all reviews for this object_id
 router.get('/:object_id?', async (req, res) => {
     const objectReviews = await reviewsList.showAllReviewsObject(req.params.object_id);
@@ -18,7 +31,7 @@ router.get('/:object_id?', async (req, res) => {
             is_logged_in: req.session.is_logged_in,
         },
         partials: {
-            partial: 'partial-image'
+            partial: 'partial-imageID'
         }
     });
 });

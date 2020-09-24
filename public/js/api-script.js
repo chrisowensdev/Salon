@@ -15,7 +15,7 @@ let objectUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/object
 
 
 const search = async (searchTerm) => {
-    let searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}`
+    let searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${searchTerm}`
     const response = await fetch(searchUrl);
     const data = await response.json();
     return data;
@@ -23,7 +23,7 @@ const search = async (searchTerm) => {
 
 
 const getObject = async (objID) => {
-    let objectUrl = `https://api.artic.edu/api/v1/artworks/${objID}
+    let objectUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objID}
     `;
     const response = await fetch(objectUrl);
     const data = await response.json();
@@ -32,38 +32,37 @@ const getObject = async (objID) => {
 
 (async function () {
     // search() returns a promise, so we need to `await` it
-    const searchData = await search('cats');
+    const searchData = await search('Monet');
     console.log(searchData)
     let objectArray = [];
     let counter = 0
     while (counter < 6) {
-        searchData.data.id.map(async (objID) => {
+        searchData.objectIDs.map(async (objID) => {
             const objDetail = await getObject(objID)
-            console.log('gotcha')
-            objectArray.push(searchData.objID)
-            counter += 1
+            if ('Monet' in objDetail) {
+                console.log('gotcha')
+                objectArray.push(searchData.objID)
+                counter += 1
+            }
         })
+        // objectArray.push(searchData.objectIDs[i]);
     }
+
     objectArray.map(async (object) => {
         const objectData = await getObject(object);
-        // console.log(object)
-        const smallImage = objectData.data.thumbnail.url;
-        const url = smallImage + '/full/full/0/default.jpg'
+        console.log(object)
+        const smallImage = objectData.primaryImageSmall;
         const link = document.createElement('a');
         link.setAttribute('href', `/images/${object}`);
 
         const image = document.createElement('img');
-        image.setAttribute('src', url);
+        image.setAttribute('src', smallImage);
+
+        imageDiv.appendChild(link);
+        link.appendChild(image);
         //imageArray[counter].setAttribute('src', smallImage);
         //counter++;
         //imageSrc.src = objectData.primaryImageSmall;
     })
 
 })();
-
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, {
-        duration: 10
-    });
-});

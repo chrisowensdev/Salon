@@ -17,3 +17,5 @@ const options = {
     password: password
 }
 const db = pgp(options);
+
+module.exports = db;

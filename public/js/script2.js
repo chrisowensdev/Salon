@@ -33,27 +33,29 @@ const getObject = async (objID) => {
 (async function () {
     // search() returns a promise, so we need to `await` it
     const searchData = await search('cats');
-    console.log(searchData)
+
+    console.log(searchData.data)
     let objectArray = [];
     let counter = 0
-    while (counter < 6) {
-        searchData.data.id.map(async (objID) => {
-            const objDetail = await getObject(objID)
-            console.log('gotcha')
-            objectArray.push(searchData.objID)
-            counter += 1
+    while (objectArray.length < 6) {
+        searchData.data.map(async (objID) => {
+            objectArray.push(objID.id)
         })
     }
     objectArray.map(async (object) => {
         const objectData = await getObject(object);
-        // console.log(object)
+        console.log(object)
         const smallImage = objectData.data.thumbnail.url;
+        console.log(smallImage)
         const url = smallImage + '/full/full/0/default.jpg'
         const link = document.createElement('a');
         link.setAttribute('href', `/images/${object}`);
 
         const image = document.createElement('img');
         image.setAttribute('src', url);
+
+        imageDiv.appendChild(link);
+        link.appendChild(image);
         //imageArray[counter].setAttribute('src', smallImage);
         //counter++;
         //imageSrc.src = objectData.primaryImageSmall;

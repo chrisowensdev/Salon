@@ -14,7 +14,8 @@ class UsersList {
     }
     async save() {
         try {
-            const response = await db.one(`INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id;`, [this.name, this.email, this.password]);
+            console.log('Issue');
+            const response = await db.one(`INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id;`, [this.username, this.email, this.password]);
             return response;
         } catch (error) {
             console.error('ERROR:', error.message);
@@ -25,7 +26,7 @@ class UsersList {
 
     async login() {
         try {
-            const response = await db.one(`SELECT id, username, email, password FROM users WHERE email = $1;`, [this.email]);
+            const response = await db.one(`SELECT id, username, email, password FROM users WHERE usernam = $1;`, [this.email]);
             const isValid = await this.checkPassword(response.password)
             if (!!isValid) {
                 const {
