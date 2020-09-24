@@ -19,9 +19,10 @@ router.get('/', async (req, res) => {
         res.render('template', {
             locals: {
                 title: 'Search',
+                is_logged_in: req.session.is_logged_in,
             },
             partials: {
-                partial: 'partial-search'
+                partial: 'partial-search',
             }
         })
     }

@@ -68,4 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var instances = M.Carousel.init(elems, {
         duration: 10
     });
+
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
 });

@@ -11,8 +11,8 @@ const reviewsList = require('../models/reviewsModel'),
 
 //GET all reviews and favorites for this user_id
 router.get('/:user_id?', async (req, res) => {
-    const userFavorites = await favoritesList.showAllFavorites(2);
-    const userReviews = await reviewsList.showAllReviewsProfile(2);
+    const userFavorites = await favoritesList.showAllFavorites(req.session.user_id);
+    const userReviews = await reviewsList.showAllReviewsProfile(req.session.user_id);
     console.log(userReviews);
     console.log(userFavorites)
     res.render('template', {

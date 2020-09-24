@@ -1,13 +1,26 @@
 <h1>${title}</h1>
 
-${data.map(item => {
-return `
-<p>${item.review_text}</p>
-`
-})}
 
-${dataFav.map(item => {
-return `
-<p>${item.object_id}</p>
-`
-})}
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Reviews</div>
+        ${data.map(item => {
+        return `
+        <div class="collapsible-body"><span>${item.review_text}</span></div>
+        `
+        }).join('')}
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Favorites</div>
+        ${dataFav.map(item => {
+        return `
+        <div class="collapsible-body"><span>${item.object_id}</span></div>
+        `
+        }).join('')}
+    </li>
+
+</ul>
+
+
+
+<script src="/public/js/coll.js"></script>
