@@ -66,7 +66,6 @@ router.get("/:object_id?", async (req, res) => {
   });
 });
 //POST new review for this user_id
-//POST to favorites list for this user_id
 router.post("/add/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
@@ -74,6 +73,7 @@ router.post("/add/:object_id?", async (req, res) => {
   await reviewsList.addReview(user_id, review_text, date, object_id);
   res.redirect(`/image/${object_id}`);
 });
+//POST to favorites list for this user_id
 router.post("/like/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
@@ -81,7 +81,7 @@ router.post("/like/:object_id?", async (req, res) => {
   await favoritesList.addFavorite(user_id, object_id);
   res.redirect(`/image/${object_id}`);
 });
-//DELETE review at specific review.id
+//DELETE favorite at specific user_id and object_id
 router.post("/unlike/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log(object_id);
@@ -89,6 +89,7 @@ router.post("/unlike/:object_id?", async (req, res) => {
   await favoritesList.removeFavorite(user_id, object_id);
   res.redirect(`/image/${object_id}`);
 });
+//DELETE review at specific review.id
 router.post("/delete/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("delete", req.body);
