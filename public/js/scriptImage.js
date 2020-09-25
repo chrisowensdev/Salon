@@ -1,7 +1,10 @@
 'use strict';
-'use strict';
 
 const imageDiv = document.querySelector('.images');
+const searchTerm = document.getElementById('searchTerm').value;
+
+console.log(searchTerm);
+
 
 const search = async (searchTerm) => {
     let searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&limit=5`
@@ -20,7 +23,7 @@ const getObject = async (objID) => {
 
 (async function () {
     // search() returns a promise, so we need to `await` it
-    const searchData = await search('Monet');
+    const searchData = await search(searchTerm);
     console.log(searchData.data)
     let objectArray = [];
     searchData.data.map(async (objID) => {

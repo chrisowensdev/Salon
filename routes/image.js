@@ -12,6 +12,7 @@ var bigData;
 
 //GET render and data for images searched
 router.get('/', async (req, res) => {
+    console.log(req.params);
     res.render('template', {
         locals: {
             title: 'Search',
