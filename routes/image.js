@@ -70,14 +70,26 @@ router.get("/:object_id?", async (req, res) => {
 router.post("/add/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
-  const { user_id, review_text, date } = req.body;
-  await reviewsList.addReview(user_id, review_text, date, object_id);
+  console.log('object_id:', object_id);
+  const {
+    user_id,
+    review_text,
+  } = req.body;
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  await reviewsList.addReview(user_id, review_text, today, object_id);
   res.redirect(`/image/${object_id}`);
 });
 router.post("/like/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
-  const { user_id } = req.body;
+  const {
+    user_id
+  } = req.body;
   await favoritesList.addFavorite(user_id, object_id);
   res.redirect(`/image/${object_id}`);
 });
@@ -85,14 +97,18 @@ router.post("/like/:object_id?", async (req, res) => {
 router.post("/unlike/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log(object_id);
-  const { user_id } = req.body;
+  const {
+    user_id
+  } = req.body;
   await favoritesList.removeFavorite(user_id, object_id);
   res.redirect(`/image/${object_id}`);
 });
 router.post("/delete/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("delete", req.body);
-  const { id } = req.body;
+  const {
+    id
+  } = req.body;
   await reviewsList.removeReview(id);
   res.redirect(`/image/${object_id}`);
 });
