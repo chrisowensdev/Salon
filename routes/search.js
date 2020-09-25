@@ -7,6 +7,7 @@ const express = require('express'),
 
 //GET render and data for images searched
 router.post('/', async (req, res) => {
+    console.log(req.body.searchTerm);
     res.render('template', {
         locals: {
             title: 'Search',
