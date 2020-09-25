@@ -1,4 +1,5 @@
 'use strict';
+'use strict';
 
 const imageDiv = document.querySelector('.images');
 
@@ -42,21 +43,3 @@ const getObject = async (objID) => {
     })
 
 })();
-
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, {
-        duration: 10
-    });
-
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems);
-
-});
-
-const searchDiv = document.querySelector('.search');
-
-searchDiv.addEventListener('click', () => {
-    const searchForm = document.querySelector('.search-form');
-    searchForm.classList.add('show');
-})
