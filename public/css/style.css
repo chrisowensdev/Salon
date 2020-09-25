@@ -19,7 +19,11 @@ nav {
 .search {
   cursor: pointer;
 }
-
+.noshadow {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 /******************************************/
 /* Dark Mode */
 

@@ -4,6 +4,7 @@
     <li>Home</li>
     <li>Logout</li>
     <li><a href="/profile">Profile</a></li>
+    <li><a href="/image">Image</a></li>
     <li class="search">
       <i class="material-icons">search</i>
       <form class="search-form" action="/" method="POST">
@@ -16,15 +17,29 @@
     </li>
   </ul>
 </nav>
+<br />
 
-<img src="../public/images/clicked-dark.png" />
-
+<form method="POST">
+  <input type="hidden" name="user_id" value="6" />
+  <input type="hidden" name="status" value="clicked" />
+  <button
+    type="submit"
+    class="btn-floating btn-large blue-grey darken-4 noshadow"
+    id="fav"
+  >
+    ${(favData === []) ? `
+    <i class="large material-icons" id="favIcon">favorite</i>
+    ` : `
+    <i class="large material-icons" id="favIcon">favorite_border</i>
+    `}
+  </button>
+</form>
 <img
   class="materialboxed"
   width="650"
   src="${imgData.url}/full/full/0/default.jpg"
 />
-<h1>${imgData.title}</h1>
+<h1><i>${imgData.title}</i></h1>
 <h2>${imgData.artist_title}</h2>
 Place of Origin: ${imgData.place_of_origin} <br />
 ${imgData.medium_display} ${imgData.description}

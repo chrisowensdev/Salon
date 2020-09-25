@@ -26,6 +26,15 @@ router.get("/:object_id?", async (req, res) => {
   const objectReviews = await reviewsList.showAllReviewsObject(
     req.params.object_id
   );
+  const favData = await favoritesList.showIfFavorite(
+    req.session.user_id,
+    req.params.object_id
+  );
+  if (favData === []) {
+    favData.is_liked = false;
+  }
+  console.log(favData);
+
   const objId = req.params.object_id;
   await fetch(`https://api.artic.edu/api/v1/artworks/${objId}`)
     .then((res) => res.json())
@@ -48,6 +57,7 @@ router.get("/:object_id?", async (req, res) => {
       title: "",
       data: objectReviews,
       imgData: bigData,
+      favData: favData,
       is_logged_in: req.session.is_logged_in,
     },
     partials: {
@@ -56,12 +66,20 @@ router.get("/:object_id?", async (req, res) => {
   });
 });
 //POST new review for this user_id
+//POST to favorites list for this user_id
 router.post("/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
-  console.log("this is the req body: ", req.body);
-  const { user_id, review_text, date } = req.body;
-  await reviewsList.addReview(user_id, review_text, date, object_id);
-  res.redirect(`/${object_id}`);
+  console.log(req.body);
+  if (req.body.addReview === "1") {
+    console.log("this is the req body: ", req.body);
+    const { user_id, review_text, date } = req.body;
+    await reviewsList.addReview(user_id, review_text, date, object_id);
+    res.redirect(`/image/${object_id}`);
+  } else if (req.body.status == "clicked") {
+    const { user_id } = req.body;
+    await favoritesList.addFavorite(user_id, object_id);
+    res.redirect(`/image/${object_id}`);
+  }
 });
 //DELETE review at specific review.id
 router.delete("/:object_id?", async (req, res) => {
@@ -69,22 +87,16 @@ router.delete("/:object_id?", async (req, res) => {
   if (req.body.delete === "delete") {
     const { id } = req.body;
     await reviewsList.removeReview(id);
-    res.redirect(`/${object_id}`);
+    res.redirect(`/image/${object_id}`);
   }
 });
-//POST to favorites list for this user_id
-router.post("/:object_id?", async (req, res) => {
-  const object_id = req.params.object_id;
-  const { user_id } = req.body;
-  await favoritesList.addFavorite(user_id, object_id);
-  res.redirect(`/${object_id}`);
-});
+
 //DELETE favorite at specific object_id
 router.delete("/:object_id?", async (req, res) => {
   if (req.body.delete === "delete") {
     const object_id = req.params.object_id;
     await favoritesList.removeFavorite(object_id);
-    res.redirect(`/${object_id}`);
+    res.redirect(`/image/${object_id}`);
   }
 });
 
