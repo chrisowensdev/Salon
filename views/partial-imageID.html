@@ -18,22 +18,25 @@
   </ul>
 </nav>
 <br />
-
-<form method="POST">
+${(favData.length < 1) ? `
+<form method="POST" action="/image/${imgData.id}" id="favorite">
   <input type="hidden" name="user_id" value="6" />
-  <input type="hidden" name="status" value="clicked" />
-  <button
-    type="submit"
-    class="btn-floating btn-large blue-grey darken-4 noshadow"
-    id="fav"
-  >
-    ${(favData.length < 1) ? `
-    <i class="large material-icons" id="favIcon">favorite_border</i>
-    ` : `
-    <i class="large material-icons" id="favIcon">favorite</i>
-    `}
+  <input type="hidden" id="favIdentifier" name="status" value="unclicked" />
+  <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
+    <i class="large material-icons" id="favIcon">favorite_border</i
+    ><em>like</em>
   </button>
 </form>
+` : `
+<form method="DELETE" action="/image/${imgData.id}" id="favorite">
+  <input type="hidden" name="user_id" value="6" />
+  <input type="hidden" id="favIdentifier" name="status" value="clicked" />
+  <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
+    <i class="large material-icons" id="favIcon">favorite</i><em>unlike</em>
+  </button>
+</form>
+`}
+
 <img
   class="materialboxed"
   width="650"
