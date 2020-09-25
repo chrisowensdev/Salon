@@ -6,12 +6,13 @@
         <li><a href="/profile">Profile</a></li>
         <li><a href="/image">Images</a></li>
         <li class="search"><i class="material-icons">search</i>
-            <form class="search-form" action="/" method="POST">
+            <form class="search-form" action="/search" method="POST">
                 <div class="input-field">
-                    <input id="search" type="search" required>
+                    <input id="search" type="search" name="searchTerm" required>
                     <label class="label-icon" for="search"></label>
                     <i class="material-icons">close</i>
                 </div>
+                <button type="submit"><i class="material-icons">search</i></button>
             </form>
         </li>
     </ul>
