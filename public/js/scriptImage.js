@@ -4,7 +4,7 @@
 const imageDiv = document.querySelector('.images');
 
 const search = async (searchTerm) => {
-    let searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&limit=5`
+    let searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}`
     const response = await fetch(searchUrl);
     const data = await response.json();
     return data;
