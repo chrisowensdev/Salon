@@ -19,7 +19,7 @@
 </nav>
 <br />
 ${(favData.length < 1) ? `
-<form method="POST" action="/image/${imgData.id}" id="favorite">
+<form method="POST" action="/image/like/${imgData.id}" id="favorite">
   <input type="hidden" name="user_id" value="6" />
   <input type="hidden" id="favIdentifier" name="status" value="unclicked" />
   <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
@@ -28,8 +28,9 @@ ${(favData.length < 1) ? `
   </button>
 </form>
 ` : `
-<form method="DELETE" action="/image/${imgData.id}" id="favorite">
+<form method="POST" action="/image/unlike/${imgData.id}" id="favorite">
   <input type="hidden" name="user_id" value="6" />
+  <input type="hidden" name="_method" value="DELETE" />
   <input type="hidden" id="favIdentifier" name="status" value="clicked" />
   <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
     <i class="large material-icons" id="favIcon">favorite</i><em>unlike</em>

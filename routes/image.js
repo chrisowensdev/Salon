@@ -67,33 +67,34 @@ router.get("/:object_id?", async (req, res) => {
 });
 //POST new review for this user_id
 //POST to favorites list for this user_id
-router.post("/:object_id?", async (req, res) => {
+router.post("/add/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
-  if (req.body.addReview === "1") {
-    console.log("this is the req body: ", req.body);
-    const { user_id, review_text, date } = req.body;
-    await reviewsList.addReview(user_id, review_text, date, object_id);
-    res.redirect(`/image/${object_id}`);
-  } else if (req.body.status == "unclicked") {
-    const { user_id } = req.body;
-    await favoritesList.addFavorite(user_id, object_id);
-    res.redirect(`/image/${object_id}`);
-  }
+  const { user_id, review_text, date } = req.body;
+  await reviewsList.addReview(user_id, review_text, date, object_id);
+  res.redirect(`/image/${object_id}`);
+});
+router.post("/like/:object_id?", async (req, res) => {
+  const object_id = req.params.object_id;
+  console.log("post", req.body);
+  const { user_id } = req.body;
+  await favoritesList.addFavorite(user_id, object_id);
+  res.redirect(`/image/${object_id}`);
 });
 //DELETE review at specific review.id
-router.delete("/:object_id?", async (req, res) => {
+router.post("/unlike/:object_id?", async (req, res) => {
+  const object_id = req.params.object_id;
+  console.log(object_id);
+  const { user_id } = req.body;
+  await favoritesList.removeFavorite(user_id, object_id);
+  res.redirect(`/image/${object_id}`);
+});
+router.post("/delete/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("delete", req.body);
-  if (req.body.delete === "delete") {
-    const { id } = req.body;
-    await reviewsList.removeReview(id);
-    res.redirect(`/image/${object_id}`);
-  } else if (req.body.status == "clicked") {
-    const object_id = req.params.object_id;
-    await favoritesList.removeFavorite(object_id);
-    res.redirect(`/image/${object_id}`);
-  }
+  const { id } = req.body;
+  await reviewsList.removeReview(id);
+  res.redirect(`/image/${object_id}`);
 });
 
 module.exports = router;
