@@ -30,10 +30,7 @@ router.get("/:object_id?", async (req, res) => {
     req.session.user_id,
     req.params.object_id
   );
-  if (favData === []) {
-    favData.is_liked = false;
-  }
-  console.log(favData);
+  console.log(objectReviews);
 
   const objId = req.params.object_id;
   await fetch(`https://api.artic.edu/api/v1/artworks/${objId}`)
@@ -69,15 +66,28 @@ router.get("/:object_id?", async (req, res) => {
 router.post("/add/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
-  const { user_id, review_text, date } = req.body;
-  await reviewsList.addReview(user_id, review_text, date, object_id);
+  console.log('object_id:', object_id);
+  const {
+    review_text,
+  } = req.body;
+  const { user_id, username } = req.session;
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  await reviewsList.addReview(user_id, username, review_text, today, object_id);
   res.redirect(`/image/${object_id}`);
 });
 //POST to favorites list for this user_id
 router.post("/like/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
-  const { user_id } = req.body;
+  console.log("username is ", req.session.username)
+  const {
+    user_id
+  } = req.session;
   await favoritesList.addFavorite(user_id, object_id);
   res.redirect(`/image/${object_id}`);
 });
@@ -85,7 +95,9 @@ router.post("/like/:object_id?", async (req, res) => {
 router.post("/unlike/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log(object_id);
-  const { user_id } = req.body;
+  const {
+    user_id
+  } = req.session;
   await favoritesList.removeFavorite(user_id, object_id);
   res.redirect(`/image/${object_id}`);
 });
@@ -93,7 +105,9 @@ router.post("/unlike/:object_id?", async (req, res) => {
 router.post("/delete/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("delete", req.body);
-  const { id } = req.body;
+  const {
+    id
+  } = req.body;
   await reviewsList.removeReview(id);
   res.redirect(`/image/${object_id}`);
 });
