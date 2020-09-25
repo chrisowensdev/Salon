@@ -27,10 +27,10 @@
     class="btn-floating btn-large blue-grey darken-4 noshadow"
     id="fav"
   >
-    ${(favData === []) ? `
-    <i class="large material-icons" id="favIcon">favorite</i>
-    ` : `
+    ${(favData.length < 1) ? `
     <i class="large material-icons" id="favIcon">favorite_border</i>
+    ` : `
+    <i class="large material-icons" id="favIcon">favorite</i>
     `}
   </button>
 </form>
