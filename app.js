@@ -52,9 +52,11 @@ server.listen(port, hostname, () => {
 const rootController = require('./routes/index'),
     imageController = require('./routes/image'),
     profileController = require('./routes/profile'),
-    usersController = require('./routes/users');
+    usersController = require('./routes/users'),
+    searchController = require('./routes/search');
 
 app.use('/', rootController);
 app.use('/users', usersController);
 app.use('/profile', profileController);
 app.use('/image', imageController);
+app.use('/search', searchController);

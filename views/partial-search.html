@@ -20,11 +20,11 @@
 <h1>${title}</h1>
 
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" action="/search" method="POST">
         <div class="row">
             <div class="input-field col s6">
                 <i class="large material-icons prefix">search</i>
-                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <textarea id="icon_prefix2" class="materialize-textarea" name="searchTerm"></textarea>
                 <label for="icon_prefix2">Search...</label>
                 <span class="helper-text" data-error="wrong" data-success="right">try searching for an artist, a style,
                     or a subject you'd like to check out!</span>
@@ -36,4 +36,3 @@
             </button>
     </form>
 </div>
-
