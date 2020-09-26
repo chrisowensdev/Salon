@@ -55,12 +55,36 @@ blockquote{
   -moz-box-shadow: none;
   box-shadow: none;
 }
+
+.logo{
+  width: 100px;
+  height: auto;
+  margin-top: 5px;
+  margin-left: 10px;
+  
+}
+
+/******************************************/
+/* Sticky Footer */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 /******************************************/
 /* Dark Mode */
 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #263238;
+    background-image: url(/images/Salon-background.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: #eceff1;
   }
 
