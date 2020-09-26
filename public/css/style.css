@@ -10,7 +10,39 @@ nav {
 .search-form {
   display: none;
 }
+h1{
+  font-size: 2.3rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+h2{
+  font-size: 2rem;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+blockquote{
+  margin: 16px 0;
+  padding-left: 0.5rem;
+  border-left: 6px solid #283593; 
+}
+  /* label color */
+  .input-field label {
+    color: #eceff1;
+  }
+/* label focus color */
+.input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label {
+  color: #536dfe !important;
+ }
 
+/* label underline focus color */
+ .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #536dfe !important;
+  box-shadow: 0 1px 0 0 #536dfe !important;
+ }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #eceff1;
+  }
 .show {
   display: block;
 }

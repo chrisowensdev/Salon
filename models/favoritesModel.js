@@ -1,10 +1,11 @@
 const db = require("./conn");
 
 class FavoritesList {
-  constructor(id, user_id, object_id) {
+  constructor(id, user_id, object_id, title) {
     this.id = id;
     this.user_id = user_id;
     this.object_id = object_id;
+    this.title = title;
   }
   static async showAllFavorites(user_id) {
     try {
@@ -33,13 +34,13 @@ class FavoritesList {
       return error.message;
     }
   }
-  static async addFavorite(user_id, object_id, is_liked) {
+  static async addFavorite(user_id, object_id, is_liked, title, date) {
     try {
       const response = await db.result(
         `
-                INSERT INTO favorites (user_id, object_id, is_liked)
-                VALUES ($1, $2, TRUE);`,
-        [user_id, object_id, is_liked]
+                INSERT INTO favorites (user_id, object_id, is_liked, title, date)
+                VALUES ($1, $2, TRUE, $3, $4);`,
+        [user_id, object_id, is_liked, title, date]
       );
       console.log(response);
       return response;

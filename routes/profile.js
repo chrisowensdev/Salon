@@ -7,7 +7,7 @@ const express = require('express'),
 const reviewsList = require('../models/reviewsModel'),
     favoritesList = require('../models/favoritesModel'),
     usersList = require('../models/usersModel');
-
+var bigData;
 
 //GET all reviews and favorites for this user_id
 router.get('/:user_id?', async (req, res) => {

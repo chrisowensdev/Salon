@@ -36,7 +36,7 @@ class ReviewsList {
     static async addReview(user_id, username, review_text, date, object_id) {
         try {
             const response = await db.result(
-                `INSERT INTO reviews (user_id, review_text, date, object_id) VALUES ($1, $2, $3, $4);`,
+                `INSERT INTO reviews (user_id, username, review_text, date, object_id) VALUES ($1, $2, $3, $4, $5);`,
                 [user_id, username, review_text, date, object_id]
             );
             return response;

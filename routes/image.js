@@ -44,8 +44,9 @@ router.get("/:object_id?", async (req, res) => {
                 description: json.data.description,
                 place_of_origin: json.data.place_of_origin,
                 medium_display: json.data.medium_display,
-                alt_text: json.data.alt_text,
-                info: json.data.info,
+                date_display: json.data.date_display,
+                alt_text: json.data.thumbnail.alt_text,
+                artist_display: json.data.artist_display
             };
         });
     console.log(bigData);
@@ -67,16 +68,15 @@ router.post("/add/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
   console.log("post", req.body);
   console.log('object_id:', object_id);
-  const {
-    review_text,
-  } = req.body;
-  const { user_id, username } = req.session;
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, '0');
   let mm = String(today.getMonth() + 1).padStart(2, '0');
   let yyyy = today.getFullYear();
-
   today = mm + '/' + dd + '/' + yyyy;
+  const {
+    review_text,
+  } = req.body;
+  const { user_id, username } = req.session;
   await reviewsList.addReview(user_id, username, review_text, today, object_id);
   res.redirect(`/image/${object_id}`);
 });
@@ -86,9 +86,15 @@ router.post("/like/:object_id?", async (req, res) => {
   console.log("post", req.body);
   console.log("username is ", req.session.username)
   const {
-    user_id
+    user_id, username
   } = req.session;
-  await favoritesList.addFavorite(user_id, object_id);
+  const { title } = req.body
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0');
+  let yyyy = today.getFullYear();
+  today = mm + '/' + dd + '/' + yyyy;
+  await favoritesList.addFavorite(user_id, object_id, title, today);
   res.redirect(`/image/${object_id}`);
 });
 //DELETE favorite at specific user_id and object_id

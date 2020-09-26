@@ -21,6 +21,24 @@
   </head>
 
   <body>
+    ${is_logged_in ? `<nav class="indigo darken-3">
+      <a href=""><img src="" alt="">LOGO</a>
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/users/logout">Logout</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li class="search"><i class="material-icons">search</i>
+              <form class="search-form" action="/search" method="POST">
+                  <div class="input-field">
+                      <input id="search" type="search" name="searchTerm" required>
+                      <label class="label-icon" for="search"></label>
+                      <i class="material-icons">close</i>
+                  </div>
+              </form>
+          </li>
+      </ul>
+  </nav>` : ``}
+
     <main>${partial}</main>
 
     <footer class="page-footer indigo darken-3">
@@ -28,7 +46,7 @@
         <div class="row">
           <div class="col l6 s12">
             <h5 class="white-text">About Us</h5>
-            <p class="grey-text text-lighten-4">What should we say here?</p>
+            <p class="grey-text text-lighten-4">Some kind of mission statement about talking about art.</p>
           </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Builders</h5>
@@ -48,7 +66,7 @@
                 >
               </li>
               <li>
-                <a class="grey-text text-lighten-3" href="#!">Katy Sage</a>
+                <a class="grey-text text-lighten-3" href="https://github.com/KatySage">Katy Sage</a>
               </li>
               <li>
                 <a
@@ -64,8 +82,8 @@
       <div class="footer-copyright indigo darken-4">
         <div class="container">
           Created by Team: placeholder="name"
-          <a class="grey-text text-lighten-4 right" href="#!"
-            >Do we want more links?</a
+          <a class="grey-text text-lighten-4 right" href="/users/signup"
+            >Sign Up Here!</a
           >
         </div>
       </div>
