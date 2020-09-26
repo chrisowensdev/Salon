@@ -16,15 +16,16 @@ ${(favData.length < 1) ? ` <form method="POST" action="/image/like/${imgData.id}
         </button>
     </form>
     `}
-
+<div class="container" style="margin-left: 4.5%;">
     <img class="materialboxed" width="650" alt= "${imgData.alt_text}" src="${imgData.url}/full/full/0/default.jpg" style="opacity: 1;" />
      <h2>${imgData.artist_display.split(/[\n$]/)[0]}</h2>
      <span style="font-size: small; white-space: pre-wrap;">${imgData.artist_display.split(/[\n$]/)[1]}</span>
-     <h1><strong>${imgData.title}</strong> | ${imgData.date_display}</h1>
-     <span style="font-size: small; margin-bottom: 0px">
+    <h1><strong>${imgData.title}</strong> | ${imgData.date_display}</h1>
+    <span style="font-size: small; margin-bottom: 0px">
     ${imgData.medium_display}</span> 
     <blockquote style="white-space: pre-line; font-size: small; margin-bottom: 0px">${imgData.description}
-      </blockquote>
+    </blockquote>
+</div>
     <ul class="collapsible">
         <li>
             <div class="collapsible-header blue-grey darken-3">

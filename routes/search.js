@@ -6,12 +6,12 @@ const express = require('express'),
     router = express.Router();
 
 //GET render and data for images searched
-router.post('/', async (req, res) => {
-    console.log(req.body.searchTerm);
+router.get('/page/:number?', async (req, res) => {
     res.render('template', {
         locals: {
             title: 'Search',
             searchTerm: req.body.searchTerm,
+            page_number: req.params.number,
             is_logged_in: req.session.is_logged_in,
         },
         partials: {
@@ -19,5 +19,17 @@ router.post('/', async (req, res) => {
         },
     });
 });
-
+router.post('/page/:number?', async (req, res) => {
+    res.render('template', {
+        locals: {
+            title: 'Search',
+            searchTerm: req.body.searchTerm,
+            page_number: req.params.number,
+            is_logged_in: req.session.is_logged_in,
+        },
+        partials: {
+            partial: 'partial-image',
+        },
+    });
+});
 module.exports = router;

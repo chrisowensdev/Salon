@@ -2,10 +2,15 @@
 'use strict';
 
 const imageDiv = document.querySelector('.images');
-const searchTerm = document.getElementById('searchTerm').value;
+// const searchTerm = document.getElementById('searchTerm').value;
+let number = document.getElementById('page_number').value
+if (number === 1){
+    let searchTerm = document.getElementById('searchTerm').value;
+    localStorage.setItem("searchTerm", searchTerm)
+}
 
-const search = async (searchTerm) => {
-    let searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&limit=5`;
+const search = async (searchTerm, number) => {
+    let searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&page=${number}`;
     const response = await fetch(searchUrl);
     const data = await response.json();
     return data;
@@ -21,8 +26,9 @@ const getObject = async (objID) => {
 
 (async function () {
     // search() returns a promise, so we need to `await` it
-    const searchData = await search(searchTerm);
-    console.log(searchData.data);
+    let searchTerm = localStorage.getItem("searchTerm")
+    const searchData = await search(searchTerm, number);    
+    console.log(localStorage.getItem("searchTerm"));
     let objectArray = [];
     searchData.data.map(async (objID) => {
         objectArray.push(objID.id);
@@ -42,4 +48,5 @@ const getObject = async (objID) => {
         imageDiv.appendChild(link);
         link.appendChild(image);
     });
+
 })();
