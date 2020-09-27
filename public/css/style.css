@@ -64,6 +64,18 @@ blockquote{
   
 }
 
+.art_and_info {
+  display: flex;
+}
+
+.art_image {
+  width: 42%;
+}
+
+.art_info {
+  flex: 1;
+}
+
 /******************************************/
 /* Sticky Footer */
 body {
