@@ -36,10 +36,12 @@ router.post('/login', async (req, res) => {
         if (!!response.isValid) {
             const {
                 email,
+                username,
                 user_id
             } = response;
             req.session.email = email
             req.session.user_id = user_id
+            req.session.username = username
             res.redirect('/')
         } else {
             res.sendStatus(401)

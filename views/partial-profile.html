@@ -3,20 +3,23 @@
 
 <ul class="collapsible">
     <li>
-        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Reviews</div>
+        <div class="collapsible-header blue-grey darken-3">
+            <i class="material-icons">format_quote</i>View Your Reviews
+        </div>
         ${data.map(item => {
         return `
-        <div class="collapsible-body"><span>${item.review_text}</span></div>
+        <div class="collapsible-body"><span style="color:white "><a href="/image/${item.object_id}">"${item.review_text}"</a></span><span style="font-size: x-small; white-space: pre-line;">\n review added on ${item.date}</span></div>
         `
         }).join('')}
     </li>
     <li>
-        <div class="collapsible-header"><i class="material-icons">place</i>Favorites</div>
+        <div class="collapsible-header blue-grey darken-3">
+            <i class="material-icons">favorite</i>View Your Favorites
+        </div>
         ${dataFav.map(item => {
         return `
-        <div class="collapsible-body"><span><a href="/image/${item.object_id}">Object name</a></span></div>
-        `
-        }).join('')}
+        <div class="collapsible-body"><span><a href="/image/${item.object_id}"><em>${item.title}</em></a></span><span style="font-size: x-small; white-space: pre-line;">\n favorite added on ${item.date}</span></div>
+        `}).join('')}
     </li>
 
 </ul>

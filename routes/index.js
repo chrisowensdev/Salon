@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
         res.render('template', {
             locals: {
                 title: 'Login',
+                is_logged_in: req.session.is_logged_in,
             },
             partials: {
                 partial: 'partial-login',

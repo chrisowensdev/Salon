@@ -1,21 +1,14 @@
-<nav>
-    <a href=""><img src="" alt="">LOGO</a>
-    <ul>
-        <li>Home</li>
-        <li>Logout</li>
-        <li><a href="/profile">Profile</a></li>
-        <li class="search"><i class="material-icons">search</i>
-            <form class="search-form" action="/" method="POST">
-                <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </form>
-        </li>
-    </ul>
-</nav>
-<div class="images">
-
-</div>
-<script src="/js/scriptImage.js"></script>
+<input type="hidden" value="${searchTerm}" id="searchTerm" />
+<input type="hidden" value="${Number(page_number)}" id="page_number" />
+<div class="images"></div>
+<ul class="pagination">
+    <li ${(page_number === "1") ? `class="disabled"` : `class="waves-effect"`}><a ${(page_number != "1") ? `href="${Number(page_number)-1}"` : `href="#!"`}><i class="material-icons">chevron_left</i></a></li>
+    <li ${(page_number === "1") ? `class="active"` : `class="waves-effect"`}><a ${(page_number != "1") ? `href="1"` : `href="#!"`}>1</a></li>
+    <li ${(page_number === "2") ? `class="active"` : `class="waves-effect"`}><a ${(page_number != "2") ? `href="2"` : `href="#!"`}>2</a></li>
+    <li ${(page_number === "3") ? `class="active"` : `class="waves-effect"`}><a ${(page_number != "3") ? `href="3"` : `href="#!"`}>3</a></li>
+    <li ${(page_number === "4") ? `class="active"` : `class="waves-effect"`}><a ${(page_number != "4") ? `href="4"` : `href="#!"`}>4</a></li>
+    <li ${(page_number === "5") ? `class="active"` : `class="waves-effect"`}><a ${(page_number != "5") ? `href="5"` : `href="#!"`}>5</a></li>
+    <li ${(page_number === "5") ? `class="disabled"` : `class="waves-effect"`}><a ${(page_number != "5") ? `href="${Number(page_number)+1}"` : `href="#!"`}><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+  </form>
+  <script src="/js/scriptImage.js"></script>
