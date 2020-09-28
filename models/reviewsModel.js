@@ -56,6 +56,7 @@ class ReviewsList {
       console.error("ERROR: ", error.message);
       return error.message;
     }
+<<<<<<< HEAD
   }
   static async removeReview(id) {
     try {
@@ -67,6 +68,19 @@ class ReviewsList {
     } catch (error) {
       console.error("ERROR: ", error.message);
       return error.message;
+=======
+    static async removeReview(id) {
+        try {
+            const response = await db.result(
+                `DELETE FROM reviews WHERE id = $1;`,
+                [id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+>>>>>>> d67041ce6753530917c7fb6ebcf698a4fc08125d
     }
   }
 

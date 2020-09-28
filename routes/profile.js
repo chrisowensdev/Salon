@@ -27,10 +27,21 @@ router.get('/:user_id?', async (req, res) => {
         }
     });
 });
+
+//DELETES user and their associated content
 router.post('/delete', async (req, res) => {
     const id = req.session.user_id;
     await usersList.removeUser(id)
     req.session.destroy();
     res.redirect('/');
 });
+//DELETE review at specific review.id
+router.post("/review-delete", async (req, res) => {
+    console.log("delete", req.body);
+    const {
+      id
+    } = req.body;
+    await reviewsList.removeReview(id);
+    res.redirect(`/profile`);
+  });
 module.exports = router;

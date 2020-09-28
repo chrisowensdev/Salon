@@ -14,7 +14,7 @@ nav {
 
 h1 {
   font-size: 2.3rem;
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 8px;
 }
 
@@ -23,9 +23,8 @@ h2 {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
-blockquote {
-  margin: 16px 0;
+blockquote{
+  margin: 8px 0;
   padding-left: 0.5rem;
   border-left: 6px solid #283593;
 }
