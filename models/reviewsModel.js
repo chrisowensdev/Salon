@@ -56,19 +56,7 @@ class ReviewsList {
       console.error("ERROR: ", error.message);
       return error.message;
     }
-<<<<<<< HEAD
-  }
-  static async removeReview(id) {
-    try {
-      const response = await db.result(
-        `DELETE FROM reviews (id) VALUES ($1);`,
-        [id]
-      );
-      return response;
-    } catch (error) {
-      console.error("ERROR: ", error.message);
-      return error.message;
-=======
+}
     static async removeReview(id) {
         try {
             const response = await db.result(
@@ -80,10 +68,7 @@ class ReviewsList {
             console.error('ERROR: ', error.message);
             return error.message;
         }
->>>>>>> d67041ce6753530917c7fb6ebcf698a4fc08125d
     }
-  }
-
   static async addComment(
     user_id,
     username,

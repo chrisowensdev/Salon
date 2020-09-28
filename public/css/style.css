@@ -11,6 +11,12 @@ nav {
 .search-form {
   display: none;
 }
+.add-comment{
+  display: none;
+}
+.see-comment{
+  display: none;
+}
 
 h1 {
   font-size: 2.3rem;
@@ -28,7 +34,7 @@ blockquote{
   padding-left: 0.5rem;
   border-left: 6px solid #283593;
 }
-
+textarea{height: 6rem; width: 34rem}
 /* label color */
 .input-field label {
   color: #eceff1;
@@ -55,6 +61,7 @@ blockquote{
 .show {
   display: block;
 }
+
 
 .search {
   cursor: pointer;

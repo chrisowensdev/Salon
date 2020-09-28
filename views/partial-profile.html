@@ -22,7 +22,8 @@
         </div>
         ${dataFav.map(item => {
         return `
-        <div class="collapsible-body"><span><a href="/image/${item.object_id}"><em>${item.title}</em></a></span><span style="font-size: x-small; white-space: pre-line;">\n favorite added on ${item.date}</span></div>
+        <div class="collapsible-body">
+            <span><a href="/image/${item.object_id}"><em>${item.title}</em></a></span><span style="font-size: x-small; white-space: pre-line;">\n favorite added on ${item.date}</span></div>
         `}).join('')}
     </li>
 

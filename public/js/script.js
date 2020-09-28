@@ -1,4 +1,5 @@
 "use strict";
+
 const favIdentifier = document.getElementById("favIdentifier");
 document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".carousel");
@@ -18,10 +19,13 @@ searchDiv.addEventListener("click", () => {
   const searchForm = document.querySelector(".search-form");
   searchForm.classList.add("show");
 });
-const searchBox = document.getElementById("icon_prefix2")
-
-searchBox.addEventListener("change", () => {
-  let searchTerm = searchBox.innerHTML
-  console.log(searchTerm)
-  localStorage.setItem("searchTerm", searchTerm)
+const addComment = document.querySelector(".addComment")
+addComment.addEventListener("click", () => {
+  let commentBox = document.querySelector('.add-comment')
+  commentBox.classList.add("show")
+})
+const seeComment = document.querySelector(".seeComment")
+seeComment.addEventListener("click", () => {
+  let commentBox = document.querySelector('.see-comment')
+  commentBox.classList.add("show")
 })
