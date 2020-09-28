@@ -1,62 +1,74 @@
-const db = require('./conn');
+const db = require("./conn");
 
 class ReviewsList {
-    constructor(id, user_id, review_text, date, object_id) {
-        this.id = id;
-        this.user_id = user_id;
-        this.review_text = review_text;
-        this.date = date;
-        this.object_id = object_id;
-    }
+  constructor(id, user_id, review_text, date, object_id) {
+    this.id = id;
+    this.user_id = user_id;
+    this.review_text = review_text;
+    this.date = date;
+    this.object_id = object_id;
+  }
 
-    static async showAllReviewsProfile(user_id) {
-        try {
-            const response = await db.any(
-                `SELECT * FROM reviews WHERE user_id = $1;`,
-                [user_id]
-            );
-            return response;
-        } catch (error) {
-            console.error('ERROR: ', error.message);
-            return error.message;
-        }
+  static async showAllReviewsProfile(user_id) {
+    try {
+      const response = await db.any(
+        `SELECT * FROM reviews WHERE user_id = $1;`,
+        [user_id]
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error.message);
+      return error.message;
     }
-    static async showAllReviewsObject(object_id) {
-        try {
-            const response = await db.any(
-                `SELECT * FROM reviews WHERE object_id = $1;`,
-                [object_id]
-            );
-            return response;
-        } catch (error) {
-            console.error('ERROR: ', error.message);
-            return error.message;
-        }
+  }
+  static async showAllReviewsObject(object_id) {
+    try {
+      const response = await db.any(
+        `SELECT * FROM reviews WHERE object_id = $1;`,
+        [object_id]
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error.message);
+      return error.message;
     }
-    static async showAllComments(review_id) {
-        try {
-            const response = await db.any(
-                `SELECT * FROM comments WHERE review_id = $1;`,
-                [review_id]
-            );
-            return response;
-        } catch (error) {
-            console.error('ERROR: ', error.message);
-            return error.message;
-        }
+  }
+  static async showAllComments(object_id) {
+    try {
+      const response = await db.any(
+        `SELECT * FROM comments WHERE object_id = $1;`,
+        [object_id]
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error.message);
+      return error.message;
     }
-    static async addReview(user_id, username, review_text, date, object_id) {
-        try {
-            const response = await db.result(
-                `INSERT INTO reviews (user_id, username, review_text, date, object_id) VALUES ($1, $2, $3, $4, $5);`,
-                [user_id, username, review_text, date, object_id]
-            );
-            return response;
-        } catch (error) {
-            console.error('ERROR: ', error.message);
-            return error.message;
-        }
+  }
+  static async addReview(user_id, username, review_text, date, object_id) {
+    try {
+      const response = await db.result(
+        `INSERT INTO reviews (user_id, username, review_text, date, object_id) VALUES ($1, $2, $3, $4, $5);`,
+        [user_id, username, review_text, date, object_id]
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error.message);
+      return error.message;
     }
+<<<<<<< HEAD
+  }
+  static async removeReview(id) {
+    try {
+      const response = await db.result(
+        `DELETE FROM reviews (id) VALUES ($1);`,
+        [id]
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error.message);
+      return error.message;
+=======
     static async removeReview(id) {
         try {
             const response = await db.result(
@@ -68,20 +80,29 @@ class ReviewsList {
             console.error('ERROR: ', error.message);
             return error.message;
         }
+>>>>>>> d67041ce6753530917c7fb6ebcf698a4fc08125d
     }
+  }
 
-    static async addComment(user_id, username, comment_text, date, object_id, review_id) {
-        try {
-            const response = await db.result(
-                `INSERT INTO comments (user_id, username, comment_text, date, object_id, review_id) VALUES ($1, $2, $3, $4, $5, $6);`,
-                [user_id, username, comment_text, date, object_id, review_id]
-            );
-            return response;
-        } catch (error) {
-            console.error('ERROR: ', error.message);
-            return error.message;
-        }
+  static async addComment(
+    user_id,
+    username,
+    comment_text,
+    date,
+    object_id,
+    review_id
+  ) {
+    try {
+      const response = await db.result(
+        `INSERT INTO comments (user_id, username, comment_text, date, object_id, review_id) VALUES ($1, $2, $3, $4, $5, $6);`,
+        [user_id, username, comment_text, date, object_id, review_id]
+      );
+      return response;
+    } catch (error) {
+      console.error("ERROR: ", error.message);
+      return error.message;
     }
+  }
 }
 
 module.exports = ReviewsList;

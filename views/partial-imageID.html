@@ -1,22 +1,79 @@
 <br />
 <!-- like and unlike button -->
-${(favData.length < 1) ? ` <form method="POST" action="/image/like/${imgData.id}" id="favorite">
-    <input type="hidden" name="title" value="${imgData.title}" />
-    <input type="hidden" id="favIdentifier" name="status" value="unclicked" />
-    <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
-        <i class="large material-icons" id="favIcon">favorite_border</i><em>like</em>
-    </button>
-    </form>
-    ` : `
-    <form method="POST" action="/image/unlike/${imgData.id}" id="favorite">
-        <input type="hidden" name="title" value="${imgData.title}" />
-        <input type="hidden" name="_method" value="DELETE" />
-        <input type="hidden" id="favIdentifier" name="status" value="clicked" />
-        <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
-            <i class="large material-icons" id="favIcon">favorite</i><em>unlike</em>
+${(favData.length < 1) ? `
+<form method="POST" action="/image/like/${imgData.id}" id="favorite">
+  <input type="hidden" name="title" value="${imgData.title}" />
+  <input type="hidden" id="favIdentifier" name="status" value="unclicked" />
+  <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
+    <i class="large material-icons" id="favIcon">favorite_border</i
+    ><em>like</em>
+  </button>
+</form>
+` : `
+<form method="POST" action="/image/unlike/${imgData.id}" id="favorite">
+  <input type="hidden" name="title" value="${imgData.title}" />
+  <input type="hidden" name="_method" value="DELETE" />
+  <input type="hidden" id="favIdentifier" name="status" value="clicked" />
+  <button type="submit" class="btn-large blue-grey darken-4 noshadow" id="fav">
+    <i class="large material-icons" id="favIcon">favorite</i><em>unlike</em>
+  </button>
+</form>
+`}
+
+<!-- art image and info -->
+<div
+  class="art_and_info"
+  style="margin-left: 4.5%; margin-right: 4.5%; max-width: 1500px"
+>
+  <div class="art_image">
+    <img
+      class="materialboxed"
+      width="88%"
+      alt="${imgData.alt_text}"
+      src="${imgData.url}/full/full/0/default.jpg"
+      style="opacity: 1"
+    />
+  </div>
+  <div class="art_info">
+    <h2>${imgData.artist_display.split(/[\n$]/)[0]}</h2>
+    <span style="font-size: small; white-space: pre-wrap"
+      >${imgData.artist_display.split(/[\n$]/)[1]}</span
+    >
+    <h1><strong>${imgData.title}</strong> | ${imgData.date_display}</h1>
+    <span style="font-size: small; margin-bottom: 0px"
+      >${imgData.medium_display}</span
+    >
+    <blockquote
+      style="white-space: pre-line; font-size: small; margin-bottom: 0px"
+    >
+      ${imgData.description}
+    </blockquote>
+  </div>
+</div>
+
+<ul class="collapsible">
+  <!-- add review -->
+  <li>
+    <div class="collapsible-header blue-grey darken-3">
+      <i class="material-icons">create</i>Add a Review
+    </div>
+    <div class="collapsible-body">
+      <form action="/image/add/${imgData.id}" method="POST">
+        <label
+          >Write a review
+          <textarea class="blue-grey lighten-3" name="review_text"></textarea>
+        </label>
+        <button
+          class="btn waves-effect waves-light indigo darken-4"
+          type="submit"
+          name="action"
+        >
+          Post
+          <i class="material-icons right">send</i>
         </button>
-    </form>
-    `}
+      </form>
+    </div>
+  </li>
 
 <!-- art image and info -->
 <div class="art_and_info" style="margin-left: 4.5%; margin-right: 4.5%; max-width: 1500px;">
