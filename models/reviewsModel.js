@@ -33,6 +33,18 @@ class ReviewsList {
             return error.message;
         }
     }
+    static async showAllComments(review_id) {
+        try {
+            const response = await db.any(
+                `SELECT * FROM comments WHERE review_id = $1;`,
+                [review_id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+    }
     static async addReview(user_id, username, review_text, date, object_id) {
         try {
             const response = await db.result(

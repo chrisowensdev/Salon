@@ -30,6 +30,7 @@ router.get("/:object_id?", async (req, res) => {
     req.session.user_id,
     req.params.object_id
   );
+  const reviewComment = await reviewsList.showAllComments(objectReviews.id);
   console.log(objectReviews);
 
   const objId = req.params.object_id;
@@ -128,7 +129,7 @@ router.post("/delete/:object_id?", async (req, res) => {
   res.redirect(`/image/${object_id}`);
 });
 
-
+//COMMENT on specific review.id
 router.post("/comment/:review_id?", async (req, res) => {
   const review_id = req.params.review_id;
   console.log('Review ID:', review_id);
