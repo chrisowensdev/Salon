@@ -61,6 +61,8 @@ blockquote{
   height: auto;
   margin-top: 5px;
   margin-left: 10px;
+  opacity: 100%;
+  transition: none
 }
 
 .login-logo{
