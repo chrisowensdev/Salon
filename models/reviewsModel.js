@@ -57,6 +57,19 @@ class ReviewsList {
             return error.message;
         }
     }
+
+    static async addComment(user_id, username, comment_text, date, object_id, review_id) {
+        try {
+            const response = await db.result(
+                `INSERT INTO comments (user_id, username, comment_text, date, object_id, review_id) VALUES ($1, $2, $3, $4, $5, $6);`,
+                [user_id, username, comment_text, date, object_id, review_id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+    }
 }
 
 module.exports = ReviewsList;
