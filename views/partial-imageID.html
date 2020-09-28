@@ -80,7 +80,7 @@ ${(favData.length < 1) ? `
                                 </div>
                                 <div class="card-action" style="padding-left: 0px; padding-right: 0px">
                                     <a class="addComment" style="cursor: pointer; font-size: small; margin-right:12px">Add a comment</a>
-                                    <a class="seeComment" style="cursor: pointer; font-size: small;">See all comments(${comData.map(comment => {if (item.id === comment.review_id){ return 1}else{return 0}}).reduce((a,b) => a+b)})</a>
+                                    <a class="seeComment" style="cursor: pointer; font-size: small;">See all comments(${(comData.length < 1) ? `0` : `comData.map(comment => {if (item.id === comment.review_id){ return 1}else{return 0}}).reduce((a,b) => a+b)`})</a>
                                 </div>
                                 </div>
                             </div>
