@@ -18,3 +18,10 @@ searchDiv.addEventListener("click", () => {
   const searchForm = document.querySelector(".search-form");
   searchForm.classList.add("show");
 });
+const searchBox = document.getElementById("icon_prefix2")
+
+searchBox.addEventListener("change", () => {
+  let searchTerm = searchBox.innerHTML
+  console.log(searchTerm)
+  localStorage.setItem("searchTerm", searchTerm)
+})
