@@ -48,6 +48,21 @@ class UsersList {
             return error.message;
         }
     }
+    static async removeUser(id) {
+        try {
+            const response = await db.result(
+                `
+                DELETE FROM reviews USING users WHERE reviews.user_id = users.id AND users.id = $1;
+                DELETE FROM favorites USING users WHERE favorites.user_id = users.id AND users.id = $1;
+                DELETE FROM users WHERE id=$1;`,
+                [id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+    }
 }
 
 module.exports = UsersList;

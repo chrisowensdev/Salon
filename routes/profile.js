@@ -27,5 +27,10 @@ router.get('/:user_id?', async (req, res) => {
         }
     });
 });
-
+router.post('/delete', async (req, res) => {
+    const id = req.session.user_id;
+    await usersList.deleteUser(id)
+    req.session.destroy();
+    res.redirect('/');
+});
 module.exports = router;
