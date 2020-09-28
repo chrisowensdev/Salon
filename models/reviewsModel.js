@@ -33,6 +33,18 @@ class ReviewsList {
             return error.message;
         }
     }
+    static async showAllComments(review_id) {
+        try {
+            const response = await db.any(
+                `SELECT * FROM comments WHERE review_id = $1;`,
+                [review_id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+    }
     static async addReview(user_id, username, review_text, date, object_id) {
         try {
             const response = await db.result(
@@ -50,6 +62,19 @@ class ReviewsList {
             const response = await db.result(
                 `DELETE FROM reviews WHERE id = $1;`,
                 [id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+    }
+
+    static async addComment(user_id, username, comment_text, date, object_id, review_id) {
+        try {
+            const response = await db.result(
+                `INSERT INTO comments (user_id, username, comment_text, date, object_id, review_id) VALUES ($1, $2, $3, $4, $5, $6);`,
+                [user_id, username, comment_text, date, object_id, review_id]
             );
             return response;
         } catch (error) {

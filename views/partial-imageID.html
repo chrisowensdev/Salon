@@ -18,7 +18,6 @@ ${(favData.length < 1) ? ` <form method="POST" action="/image/like/${imgData.id}
     </form>
     `}
 
-
 <!-- art image and info -->
 <div class="art_and_info" style="margin-left: 4.5%; margin-right: 4.5%; max-width: 1500px;">
     <div class="art_image">
@@ -60,32 +59,64 @@ ${(favData.length < 1) ? ` <form method="POST" action="/image/like/${imgData.id}
                 </button>
             </form>
         </div>
-    </li>
+    </div>
+
+    <ul class="collapsible">
+        <!-- add review -->
+        <li>
+            <div class="collapsible-header blue-grey darken-3">
+                <i class="material-icons">create</i>Add a Review
+            </div>
+            <div class="collapsible-body">
+                <form action="/image/add/${imgData.id}" method="POST">
+                    <label>Write a review
+                        <textarea class="blue-grey lighten-3" name="review_text"></textarea>
+                    </label>
+                    <button class="btn waves-effect waves-light indigo darken-4" type="submit" name="action">
+                        Post
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </li>
 
 
-    <!-- read reviews -->
-    <li>
-        <div class="collapsible-header blue-grey darken-3">
-            <i class="material-icons">format_quote</i>See All Reviews
-        </div>
-        <div class="collapsible-body">
-                ${data.map(item => { return `
+        <!-- read reviews -->
+        <li>
+            <div class="collapsible-header blue-grey darken-3">
+                <i class="material-icons">format_quote</i>See All Reviews
+            </div>
+            <div class="collapsible-body">
+                <div class="container left-align">
+                    ${data.map(item => { return `
                     <div class="row">
-                        <div class="col m4">
-                        <div class="card blue-grey darken-1" style="opacity: 70%;">
-                            <div class="card-content white-text">
-                            <span class="card-title">${item.username}</span>
-                            <blockquote>"${item.review_text}"</blockquote>
-                            <div style="font-size: small">
-                                -${item.date}-
-                                
-                            </div>
-                            
-                            </div>
-                        </div>
-                        </div>
-                    </div>`}).join('')}
+                        <h5><strong>${item.username}</strong></h5>
+                    </div>
+                    <div class="row">
+                        <blockquote align="left">
+                            <h6>"${item.review_text}"</h6>
+                        </blockquote>
+                    </div>
+                    <div class="row" style="font-size: small">-${item.date}-</div>
 
-    </li>
-
-</ul>
+                    <div class="add-comment">
+                        <p>Comment</p>
+                        <div class="comment-form">
+                            <form action="/image/comment/${item.id}" method="POST">
+                                <input type="hidden" name="object_id" value="${imgData.id}">
+                                <label>Write a comment
+                                    <textarea class="blue-grey lighten-3" name="comment_text"></textarea>
+                                </label>
+                                <button class="btn waves-effect waves-light indigo darken-4" type="submit"
+                                    name="action">
+                                    Post
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    `}).join('')}
+                </div>
+            </div>
+        </li>
+    </ul>
