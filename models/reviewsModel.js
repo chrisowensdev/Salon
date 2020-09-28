@@ -70,6 +70,18 @@ class ReviewsList {
             return error.message;
         }
     }
+    static async showAllCommentsReview(review_id) {
+        try {
+            const response = await db.any(
+                `SELECT * FROM comments WHERE review_id = $1;`,
+                [review_id]
+            );
+            return response;
+        } catch (error) {
+            console.error('ERROR: ', error.message);
+            return error.message;
+        }
+    }
 }
 
 module.exports = ReviewsList;
