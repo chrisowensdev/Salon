@@ -61,8 +61,27 @@ blockquote{
   height: auto;
   margin-top: 5px;
   margin-left: 10px;
-  
 }
+
+.login-logo{
+  width: 120px;
+  height: auto;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.art_and_info {
+  display: flex;
+}
+
+.art_image {
+  width: 42%;
+}
+
+.art_info {
+  flex: 1;
+}
+
 
 /******************************************/
 /* Sticky Footer */

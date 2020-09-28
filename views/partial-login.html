@@ -1,60 +1,46 @@
-<h1>${title}</h1>
+<div class="row">
+  <a><img class="login-logo" src="/images/Salon-1.png" alt="salon logo"></a>
+</div>
 
+<!-- Image Carousel -->
 <div class="carousel">
-  <a class="carousel-item" href="#one!"
-    ><img
-      src="https://images.metmuseum.org/CRDImages/ep/original/DT1562.jpg"
-      style="width: 200%; opacity: 1"
-    />
+  <a class="carousel-item">
+    <img src="https://images.metmuseum.org/CRDImages/ep/original/DT1562.jpg" style="opacity: 1"/>
   </a>
-  <a class="carousel-item" href="#two!"
-    ><img
-      src="https://images.metmuseum.org/CRDImages/dp/original/DP831079.jpg"
-      style="width: 200%; opacity: 1"
-    />
+  <a class="carousel-item">
+    <img src="https://images.metmuseum.org/CRDImages/dp/original/DP831079.jpg" style="opacity: 1"/>
   </a>
-  <a class="carousel-item" href="#three!"
-    ><img
-      src="https://images.metmuseum.org/CRDImages/ep/original/DP145937.jpg"
-      style="width: 200%; opacity: 1"
-    />
+  <a class="carousel-item">
+    <img src="https://images.metmuseum.org/CRDImages/ep/original/DP145937.jpg" style="opacity: 1"/>
   </a>
-  <a class="carousel-item" href="#four!"
-    ><img
-      src="https://images.metmuseum.org/CRDImages/ph/original/DP149521.jpg"
-      style="width: 200%; opacity: 1"
-    />
+  <a class="carousel-item">
+    <img src="https://images.metmuseum.org/CRDImages/ph/original/DP149521.jpg" style="opacity: 1"/>
   </a>
-  <a class="carousel-item" href="#five!"
-    ><img
-      src="https://images.metmuseum.org/CRDImages/ep/original/DP-414-001.jpg"
-      style="width: 200%; opacity: 1"
-    />
+  <a class="carousel-item">
+    <img src="https://images.metmuseum.org/CRDImages/ep/original/DP-414-001.jpg" style="opacity: 1"/>
   </a>
 </div>
+
 <br />
-<br />
+
+<!-- Log in -->
 <div class="row center-align">
+  <h1>${title}</h1>
   <form class="col s12" action="/users/login" method="POST">
     <div class="row">
       <div class="input-field col s6">
-        <input id="first_name" type="text" name="username" class="validate" />
+        <input id="first_name" type="text" name="username" class="validate grey-text text-lighten-3" />
         <label for="first_name">User Name</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input id="password" type="password" name="password" class="validate" />
+        <input id="password" type="password" name="password" class="validate grey-text text-lighten-3" />
         <label for="password">Password</label>
       </div>
     </div>
     <button
-      class="btn waves-effect waves-light indigo darken-4"
-      type="submit"
-      name="action"
-    >
-      Login
-      <i class="material-icons right">send</i>
+      class="btn waves-effect waves-light indigo darken-4" type="submit" name="action">Login<i class="material-icons right">send</i>
     </button>
   </form>
 </div>

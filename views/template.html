@@ -21,6 +21,8 @@
   </head>
 
   <body>
+
+    <!-- navbar -->
     ${is_logged_in ? `<nav class="indigo darken-3">
       <a href="/"><img class="logo" src="/images/Salon-1.png" alt="logo"></a>
       <ul>
@@ -41,39 +43,29 @@
 
     <main>${partial}</main>
 
+
+    <!-- Page Footer -->
     <footer class="page-footer indigo darken-3">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">About Us</h5>
-            <p class="grey-text text-lighten-4">Some kind of mission statement about talking about art.</p>
+            <h5 class="white-text">Salon:</h5>
+            <p class="grey-text text-lighten-4">The French Art Salons of the 17th, 18th, and 19th centuries served as a mixing pot of ideas and growth of knowledge through conversation. This was the 'Age of Conversation' in the art world and our mission is to spark a return to the exchange of ideas that flowed as people from different walks of life gathered and learned from one another. Welcome to Salon, your new place to gather, share, and learn.</p>
           </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Builders</h5>
             <ul>
               <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://www.linkedin.com/in/chrisowensdev/"
-                  >Chris Owens</a
-                >
+                <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/chrisowensdev/">Chris Owens</a>
               </li>
               <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://www.linkedin.com/in/justin-gardner-981477156/"
-                  >Justin Gardner</a
-                >
+                <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/justin-gardner-981477156/">Justin Gardner</a>
               </li>
               <li>
                 <a class="grey-text text-lighten-3" href="https://github.com/KatySage">Katy Sage</a>
               </li>
               <li>
-                <a
-                  class="grey-text text-lighten-3"
-                  href="https://www.linkedin.com/in/tait-loughridge-6a6026134/"
-                  >Tait A-Meglasson</a
-                >
+                <a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/tait-loughridge-6a6026134/">Tait A-Meglasson</a>
               </li>
             </ul>
           </div>
@@ -82,9 +74,10 @@
       <div class="footer-copyright indigo darken-4">
         <div class="container">
           Created by Team: placeholder="name"
-          <a class="grey-text text-lighten-4 right" href="/users/signup"
-            >Sign Up Here!</a
-          >
+
+    <!-- sign up link -->
+          ${is_logged_in ? `` : `<a class="grey-text text-lighten-4 right" href="/users/signup"
+            >Sign Up Here!</a>`}
         </div>
       </div>
     </footer>
@@ -92,5 +85,6 @@
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="/js/materialize.min.js"></script>
     <script src="/js/script.js"></script>
+
   </body>
 </html>
