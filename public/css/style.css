@@ -72,7 +72,11 @@ textarea{height: 6rem; width: 34rem}
   -moz-box-shadow: none;
   box-shadow: none;
 }
-
+#fav:hover{
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 .logo {
   width: 100px;
   height: auto;

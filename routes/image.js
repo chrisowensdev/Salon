@@ -10,7 +10,11 @@ const reviewsList = require("../models/reviewsModel"),
 var bigData;
 
 //GET render and data for images searched
+
 router.get("/", async (req, res) => {
+  if (!req.session.is_logged_in) {
+    res.redirect('/')
+  } else {
   res.render("template", {
     locals: {
       title: "Search",
@@ -20,9 +24,12 @@ router.get("/", async (req, res) => {
       partial: "partial-image",
     },
   });
-});
+}});
 //GET all reviews for this object_id
 router.get("/:object_id?", async (req, res) => {
+  if (!req.session.is_logged_in) {
+    res.redirect('/')
+  } else {
   const objectReviews = await reviewsList.showAllReviewsObject(
     req.params.object_id
   );
@@ -65,7 +72,7 @@ router.get("/:object_id?", async (req, res) => {
       partial: "partial-imageID",
     },
   });
-});
+}});
 //POST new review for this user_id
 router.post("/add/:object_id?", async (req, res) => {
   const object_id = req.params.object_id;
@@ -94,7 +101,9 @@ router.post("/like/:object_id?", async (req, res) => {
   let mm = String(today.getMonth() + 1).padStart(2, "0");
   let yyyy = today.getFullYear();
   today = mm + "/" + dd + "/" + yyyy;
-  await favoritesList.addFavorite(user_id, object_id, title, today);
+  const imgURL = `${bigData.url}/full/full/0/default.jpg`
+  console.log(imgURL)
+  await favoritesList.addFavorite(user_id, object_id, title, today, imgURL);
   res.redirect(`/image/${object_id}`);
 });
 

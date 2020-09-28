@@ -11,6 +11,9 @@ const reviewsList = require('../models/reviewsModel'),
 
 //GET all reviews and favorites for this user_id
 router.get('/:user_id?', async (req, res) => {
+    if (!req.session.is_logged_in) {
+        res.redirect('/')
+      } else {
     const userFavorites = await favoritesList.showAllFavorites(req.session.user_id);
     const userReviews = await reviewsList.showAllReviewsProfile(req.session.user_id);
     console.log(userReviews);
@@ -26,7 +29,7 @@ router.get('/:user_id?', async (req, res) => {
             partial: 'partial-profile'
         }
     });
-});
+}});
 
 //DELETES user and their associated content
 router.post('/delete', async (req, res) => {
