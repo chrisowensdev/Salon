@@ -15,7 +15,7 @@ The French Art Salons of the 17th, 18th, and 19th centuries served as a mixing p
     - We solved this by creating pagination, and limited the API so that only 10 images displayed per screen load.
 
 - Adding comments to a specific review was a challenge. Without it we felt it would not create enough user interaction.
-    - To create a solution for this, we created a seperate table and foreign-key in our database referencing the specified review.
+    - To create a solution for this, we created a separate table and foreign-key in our database referencing the specified review.
 
 ## Screenshots
 ![mockup](public/images/salon-mockup2.png)
