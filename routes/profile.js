@@ -13,7 +13,7 @@ const reviewsList = require('../models/reviewsModel'),
 router.get('/:user_id?', async (req, res) => {
     if (!req.session.is_logged_in) {
         res.redirect('/')
-      } else {
+    } else {
     const userFavorites = await favoritesList.showAllFavorites(req.session.user_id);
     const userReviews = await reviewsList.showAllReviewsProfile(req.session.user_id);
     console.log(userReviews);
@@ -42,9 +42,9 @@ router.post('/delete', async (req, res) => {
 router.post("/review-delete", async (req, res) => {
     console.log("delete", req.body);
     const {
-      id
+    id
     } = req.body;
     await reviewsList.removeReview(id);
     res.redirect(`/profile`);
-  });
+});
 module.exports = router;

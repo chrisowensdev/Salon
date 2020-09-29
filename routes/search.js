@@ -9,7 +9,7 @@ const express = require('express'),
 router.get('/page/:number?', async (req, res) => {
     if (!req.session.is_logged_in) {
         res.redirect('/')
-      } else {
+    } else {
     res.render('template', {
         locals: {
             title: 'Search',
