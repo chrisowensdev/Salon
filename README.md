@@ -65,10 +65,10 @@ $ npm start
 Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus. -->
 
 ## Credits
-<a href="https://github.com/TaitLoughridge">Tait A-Meglasson</a>
-<a href="https://github.com/KatySage">Katy Sage</a>
-<a href="https://github.com/JustinSGardner">Justin Gardner</a>
-<a href="https://github.com/chrisowensdev">Chris Owens</a>
+-<a href="https://github.com/TaitLoughridge">Tait A-Meglasson</a>
+-<a href="https://github.com/KatySage">Katy Sage</a>
+-<a href="https://github.com/JustinSGardner">Justin Gardner</a>
+-<a href="https://github.com/chrisowensdev">Chris Owens</a>
 
 ## License
 The data in this API response is licensed under a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions of artic.edu.
