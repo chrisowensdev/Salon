@@ -19,13 +19,23 @@ searchDiv.addEventListener("click", () => {
   const searchForm = document.querySelector(".search-form");
   searchForm.classList.add("show");
 });
-const addComment = document.querySelector(".addComment")
-addComment.addEventListener("click", () => {
+const addComment = document.querySelectorAll(".addComment")
+addComment.forEach(item => { item.addEventListener("click", () => {
   let commentBox = document.querySelector('.add-comment')
-  commentBox.classList.add("show")
+  if (commentBox.classList.contains("show")){
+    commentBox.classList.remove("show")
+  }else {
+    commentBox.classList.add("show")
+  }
+  })
 })
-const seeComment = document.querySelector(".seeComment")
-seeComment.addEventListener("click", () => {
+const seeComment = document.querySelectorAll(".seeComment")
+seeComment.forEach(item => { item.addEventListener("click", () => {
   let commentBox = document.querySelector('.see-comment')
-  commentBox.classList.add("show")
+  if (commentBox.classList.contains("show")){
+    commentBox.classList.remove("show")
+  }else {
+    commentBox.classList.add("show")
+  }
+  })
 })
