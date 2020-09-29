@@ -60,7 +60,9 @@ class ReviewsList {
     static async removeReview(id) {
         try {
             const response = await db.result(
-                `DELETE FROM reviews WHERE id = $1;`,
+                `DELETE FROM comments WHERE review_id = $1;
+                DELETE FROM reviews WHERE id = $1;
+                `,
                 [id]
             );
             return response;
