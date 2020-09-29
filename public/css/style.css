@@ -11,10 +11,12 @@ nav {
 .search-form {
   display: none;
 }
-.add-comment{
+
+.add-comment {
   display: none;
 }
-.see-comment{
+
+.see-comment {
   display: none;
 }
 
@@ -29,12 +31,18 @@ h2 {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-blockquote{
+
+blockquote {
   margin: 8px 0;
   padding-left: 0.5rem;
   border-left: 6px solid #283593;
 }
-textarea{height: 6rem; width: 34rem}
+
+textarea {
+  height: 6rem;
+  width: 34rem
+}
+
 /* label color */
 .input-field label {
   color: #eceff1;
@@ -72,11 +80,13 @@ textarea{height: 6rem; width: 34rem}
   -moz-box-shadow: none;
   box-shadow: none;
 }
-#fav:hover{
+
+#fav:hover {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
+
 .logo {
   width: 100px;
   height: auto;
@@ -161,4 +171,10 @@ main {
   background-color: #283593;
   padding: 10px;
   border: 1px solid white;
+}
+
+@media screen and (max-width: 780px) {
+  li.search {
+    display: none;
+  }
 }
